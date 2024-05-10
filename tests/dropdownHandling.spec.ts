@@ -40,7 +40,7 @@ test('Searchable Dynamic DropDown', async ({ page }) => {
 test.only('Non Searchable Dynamic DropDown', async ({ page }) => {
     await page.goto('https://demo.automationtesting.in/Register.html');
     await page.locator('span[role="combobox"]').click();
-    await page.locator('#select2-country-results>').locator('li',{
+    await page.locator('#select2-country-results').locator('li',{
         hasText:"India"
     }).click();
     await page.waitForTimeout(3000);
