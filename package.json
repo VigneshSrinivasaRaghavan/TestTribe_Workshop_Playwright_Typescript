@@ -8,14 +8,19 @@
     "generate:report": "npx allure generate ./allure-results --clean",
     "open:report": "npx allure open ./allure-report",
     "pretest": "npm run clean:report",
-    "posttest": "npm run generate:report && npm run open:report",
-    "test": "npx playwright test --project=chromium || npm run posttest"
+    "posttest": "npm run generate:report",
+    "chromium":"npx playwright test ./tests/alertHandling.spec.ts --project=chromium",
+    "firefox":"npx playwright test ./tests/alertHandling.spec.ts --project=firefox",
+    "webkit":"npx playwright test ./tests/alertHandling.spec.ts --project=webkit",
+    "test:chromium": "npm run pretest && npm run chromium && npm run posttest|| npm run posttest",
+    "test:firefox": "npm run pretest && npm run firefox && npm run posttest|| npm run posttest",
+    "test:webkit": "npm run pretest && npm run webkit && npm run posttest|| npm run posttest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.43.1",
+    "@playwright/test": "^1.44.0",
     "@types/node": "^20.12.7",
     "allure-commandline": "^2.29.0",
     "allure-playwright": "^2.15.1",
